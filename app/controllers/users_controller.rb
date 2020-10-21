@@ -5,9 +5,35 @@ class UsersController < ApplicationController
     end 
 
     def create
-        byebug
+        @user = User.new(user_params)
+
+        if @user.save
+            session[:user_id] = @user.id
+            redirect_to @user
+        else 
+            render :new
+        end 
+    end 
+    
+    def edit 
+        if current_user != set_user
+            redirect_to current_user
+        end 
     end 
 
-    def index 
+    def show
+        set_user
     end 
+
+
+    private
+
+    def set_user
+        @user = User.find(params[:id])
+    end 
+
+    def user_params
+        params.require(:user).permit(:username, :password, :password_confirmation)
+    end
+
 end
