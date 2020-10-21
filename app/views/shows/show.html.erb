@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @show.title %>
+</p>
+
+<p>
+  <strong>Episodes:</strong>
+  <%= @show.episode %>
+</p>
+
+<p>
+  <strong>Cast:</strong><br>
+  <%= @show.actors.map { |actor| actor.name}.join(", ") %> <br>
+</p>
+
+<%= link_to 'Edit', edit_show_path(@show) %> |
+<%= link_to 'Back', shows_path %>
