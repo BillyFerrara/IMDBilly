@@ -10,6 +10,7 @@ class ActorsController < ApplicationController
   # GET /actors/1
   # GET /actors/1.json
   def show
+    @actor = Actor.find(params[:id])
   end
 
   # GET /actors/new
